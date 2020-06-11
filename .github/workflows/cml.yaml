@@ -14,8 +14,11 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-        
-          python --version
           pip install -r requirements.txt
+          python neural_style_transfer.py imgs/owl_pic.jpg imgs/georgia_okeefe.jpg results/owl --iter 10
+
+          cml-publish final_image.png --md --title 'styled' >> report.md
+          cml-send-comment report.md 
+          cml-send-github-check report.md 
           
           
