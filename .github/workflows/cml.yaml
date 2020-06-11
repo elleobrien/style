@@ -24,6 +24,7 @@ jobs:
           cml-publish final_owl.png --md --title 'styled' >> report.md
           
           echo "## Master" >> report.md
+          git fetch --prune --unshallow
           git show master:final_owl.png > master_owl.png
           cml-publish master_owl.png --md --title 'master' >> report.md
           
