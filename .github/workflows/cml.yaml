@@ -24,8 +24,7 @@ jobs:
           # cml-publish final_owl.png --md --title 'styled' >> report.md
           
           #echo "## Master" >> report.md
-          git fetch origin master
-          git show master:final_owl.png > master_owl.png
+          git show origin/master:final_owl.png > master_owl.png
           cml-publish master_owl.png --md --title 'master' >> report.md
           
           cml-send-comment report.md 
