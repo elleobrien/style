@@ -21,7 +21,7 @@ jobs:
           
           echo "# Style transfer" >> report.md
           echo "## Workspace" >> report.md
-          cml-publish final_image.png --md --title 'styled' >> report.md
+          cml-publish final_owl.png --md --title 'styled' >> report.md
           
           echo "## Master" >> report.md
           git show master:final_owl.png > master_owl.png
