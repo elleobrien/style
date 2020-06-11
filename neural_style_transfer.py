@@ -245,4 +245,4 @@ for i in range(iterations):
     print('Iteration %d completed in %ds' % (i, end_time - start_time))
 
 # Save a final image
-save_img("final_image.png", img)
+save_img("final_owl.png", img)
