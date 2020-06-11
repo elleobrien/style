@@ -21,7 +21,7 @@ parser.add_argument('--content_weight', type=float, default=0.025, required=Fals
                     help='Content weight.')
 parser.add_argument('--style_weight', type=float, default=1.0, required=False,
                     help='Style weight.')
-parser.add_argument('--tv_weight', type=float, default=1.0, required=False,
+parser.add_argument('--tv_weight', type=float, default=5.0, required=False,
                     help='Total Variation weight.')
 
 args = parser.parse_args()
