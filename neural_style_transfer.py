@@ -41,7 +41,7 @@ img_nrows = 512
 img_ncols = int(width * img_nrows / height)
 
 # util function to open, resize and format pictures into appropriate tensors
-
+print("Hi")
 
 def preprocess_image(image_path):
     img = load_img(image_path, target_size=(img_nrows, img_ncols))
