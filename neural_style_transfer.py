@@ -37,7 +37,7 @@ content_weight = args.content_weight
 
 # dimensions of the generated picture.
 width, height = load_img(base_image_path).size
-img_nrows = 400
+img_nrows = 512
 img_ncols = int(width * img_nrows / height)
 
 # util function to open, resize and format pictures into appropriate tensors
@@ -236,12 +236,12 @@ for i in range(iterations):
                                      fprime=evaluator.grads, maxfun=20)
     print('Current loss value:', min_val)
     # save current generated image
-    if i % 10 ==0:
+    if i % 10 == 0:
         img = deprocess_image(x.copy())
         fname = result_prefix + '_at_iteration_%d.png' % i
         save_img(fname, img)
+        print('Image saved as', fname)
     end_time = time.time()
-    print('Image saved as', fname)
     print('Iteration %d completed in %ds' % (i, end_time - start_time))
 
 # Save a final image
