@@ -5,7 +5,9 @@ on: [push]
 jobs:
   run:
     runs-on: [self-hosted]
-    container: docker://dvcorg/cml-gpu-py3:latest
+    container: 
+      image: docker://dvcorg/dvc-cml-gpu:latest
+      options: --runtime "nvidia" -e NVIDIA_VISIBLE_DEVICES=all
 
     steps:
       - uses: actions/checkout@v2
