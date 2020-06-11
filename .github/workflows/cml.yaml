@@ -5,7 +5,7 @@ on: [push]
 jobs:
   run:
     runs-on: [self-hosted]
-    container: docker://dvcorg/cml-py3-gpu:latest
+    container: docker://dvcorg/cml-gpu-py3:latest
 
     steps:
       - uses: actions/checkout@v2
@@ -16,3 +16,4 @@ jobs:
         run: |
         
           python --version
+          source activate tensorflow_p36
