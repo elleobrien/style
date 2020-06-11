@@ -16,17 +16,17 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          #pip install -r requirements.txt
-          #python neural_style_transfer.py imgs/owl_photo.jpg imgs/georgia_okeefe.jpg results/owl --iter 10
+          pip install -r requirements.txt
+          python neural_style_transfer.py imgs/owl_photo.jpg imgs/georgia_okeefe.jpg results/owl --iter 10
           
-          # echo "# Style transfer" >> report.md
-          # echo "## Workspace" >> report.md
-          # cml-publish final_owl.png --md --title 'styled' >> report.md
+          echo "# Style transfer" >> report.md
+          echo "## Workspace" >> report.md
+          cml-publish final_owl.png --md --title 'styled' >> report.md
           
-          #echo "## Master" >> report.md
+          echo "## Master" >> report.md
           git show origin/master:final_owl.png > master_owl.png
           cml-publish master_owl.png --md --title 'master' >> report.md
           
           cml-send-comment report.md 
-          cml-send-github-check report.md 
+          #cml-send-github-check report.md 
           
