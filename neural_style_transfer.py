@@ -251,7 +251,13 @@ train_duration = end_time - train_start
 save_img("final_owl.png", img)
 
 
-df = pd.DataFrame(data = {"Value":[train_duration,min_val]}, index=["Run time (s)","Final loss"])
+df = pd.DataFrame(data = {"Value":[i,train_duration,min_val]}, index=["Iterations","Run time (s)","Final loss"])
 df.index.names= ['Metric']
 with open("metrics.txt", "w") as outfile:
+    outfile.write(df.to_markdown())
+
+# Make a table of GPU info
+g = nvgpu.gpu_info()
+df = pd.DataFrame.from_dict(g[0], orient="index")
+with open("gpu_info.txt", "w") as outfile:
     outfile.write(df.to_markdown())
