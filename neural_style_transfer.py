@@ -4,7 +4,7 @@ import numpy as np
 from scipy.optimize import fmin_l_bfgs_b
 import time
 import argparse
-
+import nvgpu
 from keras.applications import vgg19
 from keras import backend as K
 import pandas as pd 
