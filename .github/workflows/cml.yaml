@@ -28,7 +28,7 @@ jobs:
           echo "## Workspace" >> report.md
           cml-publish final_owl.png --md --title 'styled' >> report.md
           
-          echo "## Training metrics"
+          echo "## Training metrics" >> report.md
           cat metrics.txt >> report.md
           
           cml-send-comment report.md 
