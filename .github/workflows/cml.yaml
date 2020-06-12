@@ -31,6 +31,9 @@ jobs:
           echo "## Training metrics" >> report.md
           cat metrics.txt >> report.md
           
+          echo "## GPU info" >> report.md
+          cat gpu_info.txt >> report.md
+          
           cml-send-comment report.md 
           cml-send-github-check report.md 
           
