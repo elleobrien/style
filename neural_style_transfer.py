@@ -37,7 +37,7 @@ content_weight = args.content_weight
 
 # dimensions of the generated picture.
 width, height = load_img(base_image_path).size
-img_nrows = 512
+img_nrows = 300
 img_ncols = int(width * img_nrows / height)
 
 # util function to open, resize and format pictures into appropriate tensors
@@ -229,6 +229,7 @@ evaluator = Evaluator()
 # so as to minimize the neural style loss
 x = preprocess_image(base_image_path)
 
+train_start = time.time()
 for i in range(iterations):
     print('Start of iteration', i)
     start_time = time.time()
@@ -244,5 +245,8 @@ for i in range(iterations):
     end_time = time.time()
     print('Iteration %d completed in %ds' % (i, end_time - start_time))
 
+train_duration = end_time - train_start
+print('Training took %ds' % (train_duration)
+      
 # Save a final image
 save_img("final_owl.png", img)
