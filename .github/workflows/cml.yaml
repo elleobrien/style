@@ -16,6 +16,7 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          apt-get install python3-dev
           pip install -r requirements.txt
           python neural_style_transfer.py imgs/owl_photo.jpg imgs/georgia_okeefe.jpg results/owl --iter 10
           
