@@ -246,7 +246,7 @@ for i in range(iterations):
     print('Iteration %d completed in %ds' % (i, end_time - start_time))
 
 train_duration = end_time - train_start
-print('Training took %ds' % (train_duration)
+print('Training took %ds' % (train_duration))
       
 # Save a final image
 save_img("final_owl.png", img)
