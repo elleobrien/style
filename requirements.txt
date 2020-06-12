@@ -3,3 +3,4 @@ keras
 pillow
 pandas
 tabulate
+nvgpu
