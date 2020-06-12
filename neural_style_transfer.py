@@ -7,6 +7,7 @@ import argparse
 
 from keras.applications import vgg19
 from keras import backend as K
+import pandas as pd 
 
 parser = argparse.ArgumentParser(description='Neural style transfer with Keras.')
 parser.add_argument('base_image_path', metavar='base', type=str,
@@ -244,9 +245,13 @@ for i in range(iterations):
         print('Image saved as', fname)
     end_time = time.time()
     print('Iteration %d completed in %ds' % (i, end_time - start_time))
-
-train_duration = end_time - train_start
-print('Training took %ds' % (train_duration))
-      
+    
+train_duration = end_time - train_start      
 # Save a final image
 save_img("final_owl.png", img)
+
+
+df = pd.DataFrame(data = {"Value":[train_duration,min_val]}, index=["Run time (s)","Final loss"])
+df.index.names= ['Metric']
+with open("metrics.txt", "w") as outfile:
+    outfile.write(df.to_markdown())
