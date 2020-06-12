@@ -32,6 +32,7 @@ jobs:
           echo "## Training metrics" >> report.md
           cat metrics.txt >> report.md
           
+          echo >> report.md
           echo "## GPU info" >> report.md
           cat gpu_info.txt >> report.md
           
