@@ -39,7 +39,7 @@ jobs:
             -e RUNNER_LABELS=$RUNNER_LABELS \
             -e RUNNER_REPO=$RUNNER_REPO \
             -e RUNNER_IDLE_TIMEOUT=120 \
-            dvcorg/cml-cloud-runner:latest && \
+            dvcorg/cml-gpu-py3-cloud-runner:latest && \
           sleep 20 && echo "Deployed $MACHINE"
           ) || (docker-machine rm -y -f $MACHINE && exit 1)
   train:
@@ -51,7 +51,7 @@ jobs:
 
       - name: cml_run
         env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.REPO_TOKEN}}
         run: |
           
           pip install -r requirements.txt
