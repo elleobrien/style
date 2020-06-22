@@ -61,6 +61,8 @@ jobs:
           echo "# Style transfer" >> report.md
           
           echo "## Master" >> report.md
+          
+          echo "Here's the part where we do git show"
           git fetch --prune --unshallow
           git show origin/master:final_owl.png > master_owl.png
           cml-publish master_owl.png --md --title 'master' >> report.md
