@@ -18,7 +18,9 @@ jobs:
         run: |
           apt-get install python3-dev -y
           pip install -r requirements.txt
-          python neural_style_transfer.py imgs/owl_photo.jpg imgs/georgia_okeefe.jpg results/owl --iter 30
+          pip install dvc
+          python neural_style_transfer.py imgs/owl_photo.jpg imgs/georgia_okeefe.jpg results/owl --iter 1
+          
           
           echo "# Style transfer" >> report.md
           
@@ -30,7 +32,7 @@ jobs:
           cml-publish final_owl.png --md --title 'styled' >> report.md
           
           echo "## Training metrics" >> report.md
-          cat metrics.txt >> report.md
+          dvc params diff --show-md >> report.md
           
           echo >> report.md
           echo "## GPU info" >> report.md
