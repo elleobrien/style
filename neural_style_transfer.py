@@ -8,6 +8,7 @@ import nvgpu
 from keras.applications import vgg19
 from keras import backend as K
 import pandas as pd 
+import yaml
 
 parser = argparse.ArgumentParser(description='Neural style transfer with Keras.')
 parser.add_argument('base_image_path', metavar='base', type=str,
@@ -16,25 +17,21 @@ parser.add_argument('style_reference_image_path', metavar='ref', type=str,
                     help='Path to the style reference image.')
 parser.add_argument('result_prefix', metavar='res_prefix', type=str,
                     help='Prefix for the saved results.')
-parser.add_argument('--iter', type=int, default=10, required=False,
-                    help='Number of iterations to run.')
-parser.add_argument('--content_weight', type=float, default=0.025, required=False,
-                    help='Content weight.')
-parser.add_argument('--style_weight', type=float, default=1.0, required=False,
-                    help='Style weight.')
-parser.add_argument('--tv_weight', type=float, default=1.0, required=False,
-                    help='Total Variation weight.')
 
 args = parser.parse_args()
 base_image_path = args.base_image_path
 style_reference_image_path = args.style_reference_image_path
 result_prefix = args.result_prefix
-iterations = args.iter
 
+# Model fitting params
+with open('params.yaml') as file:
+    model_args = yaml.load(file, Loader=yaml.FullLoader)
+
+iterations = model_args['iter']
 # these are the weights of the different loss components
-total_variation_weight = args.tv_weight
-style_weight = args.style_weight
-content_weight = args.content_weight
+total_variation_weight = model_args['tv_weight']
+style_weight = model_args['style_weight']
+content_weight = model_args['tv_weight']
 
 # dimensions of the generated picture.
 width, height = load_img(base_image_path).size
