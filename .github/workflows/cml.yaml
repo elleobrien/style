@@ -53,31 +53,31 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN}}
         run: |
-          #apt-get update -y
-          #apt-get install python3-dev -y
-          #pip install -r requirements.txt
-          #python neural_style_transfer.py imgs/owl_photo.jpg imgs/georgia_okeefe.jpg results/owl --iter 1
+          apt-get update -y
+          apt-get install python3-dev -y
+          pip install -r requirements.txt
+          python neural_style_transfer.py imgs/owl_photo.jpg imgs/georgia_okeefe.jpg results/owl --iter 1
           
-          #echo "# Style transfer" >> report.md
+          echo "# Style transfer" >> report.md
           
-          #echo "## Master" >> report.md
+          echo "## Master" >> report.md
           
           echo "Here's the part where we do git show"
           git fetch --prune --unshallow
           git show origin/master:final_owl.png > master_owl.png
           
-          #cml-publish master_owl.png --md --title 'master' >> report.md
+          cml-publish master_owl.png --md --title 'master' >> report.md
           
-          #echo "## Workspace" >> report.md
-          #cml-publish final_owl.png --md --title 'styled' >> report.md
+          echo "## Workspace" >> report.md
+          cml-publish final_owl.png --md --title 'styled' >> report.md
           
-          #echo "## Training metrics" >> report.md
-          #cat metrics.txt >> report.md
+          echo "## Training metrics" >> report.md
+          cat metrics.txt >> report.md
           
-          #echo >> report.md
-          #echo "## GPU info" >> report.md
-          #cat gpu_info.txt >> report.md
+          echo >> report.md
+          echo "## GPU info" >> report.md
+          cat gpu_info.txt >> report.md
           
-          #cml-send-comment report.md 
-          #cml-send-github-check report.md 
+          cml-send-comment report.md 
+          cml-send-github-check report.md 
           
