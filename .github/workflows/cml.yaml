@@ -32,6 +32,7 @@ jobs:
           cml-publish final_owl.png --md --title 'styled' >> report.md
           
           echo "## Training metrics" >> report.md
+          git fetch --prune --unshallow
           dvc params diff master --show-md >> report.md
           
           echo >> report.md
