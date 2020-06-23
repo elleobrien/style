@@ -19,8 +19,8 @@ jobs:
           apt-get install python3-dev -y
           pip install -r requirements.txt
           pip install dvc
-          python neural_style_transfer.py imgs/owl_photo.jpg imgs/georgia_okeefe.jpg results/owl 
-          
+          dvc repro
+      
           
           echo "# Style transfer" >> report.md
           
