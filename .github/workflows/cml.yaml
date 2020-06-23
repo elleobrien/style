@@ -55,9 +55,4 @@ jobs:
         run: |
           
           git fetch --prune
-          git --no-pager branch
-          
-          git show-ref
-          git checkout master
-          cat params.yaml
-          
+          dvc params diff master
