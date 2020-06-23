@@ -57,7 +57,7 @@ jobs:
           apt-get install python3-dev -y
           pip install -r requirements.txt
           dvc repro
-          dvc params diff master
+          dvc params diff 
           
           echo "# Style transfer" >> report.md
           
