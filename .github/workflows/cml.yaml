@@ -58,4 +58,6 @@ jobs:
           git --no-pager branch
           
           git show-ref
+          git checkout master
+          cat params.yaml
           
