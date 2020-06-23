@@ -39,7 +39,7 @@ jobs:
             -e RUNNER_LABELS=$RUNNER_LABELS \
             -e RUNNER_REPO=$RUNNER_REPO \
             -e RUNNER_IDLE_TIMEOUT=120 \
-            dvcorg/cml-gpu-py3-cloud-runner:latest && \
+            dvcorg/cml-cloud-runner:latest && \
           sleep 20 && echo "Deployed $MACHINE"
           ) || (docker-machine rm -y -f $MACHINE && exit 1)
   train:
@@ -53,31 +53,9 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN}}
         run: |
-          apt-get update -y
-          apt-get install python3-dev -y
-          apt install imagemagick -y
-          pip install -r requirements.txt
-
-          pip install dvc
-          dvc repro
           
-          echo "# Style transfer" >> report.md
-          git show origin/master:final_owl.png > master_owl.png
-          convert +append final_owl.png master_owl.png out.png
-          convert out.png -resize 75%  out_shrink.png
-          echo "### Workspace vs. Master" >> report.md
-          cml-publish out_shrink.png --md --title 'compare' >> report.md
-
+          git fetch --prune
+          git --no-pager branch
           
-          echo "## Training metrics" >> report.md
-          git fetch --prune --unshallow
-          git fetch origin master:refs/remotes/origin/master
-          dvc params diff master --show-md >> report.md
-          
-          echo >> report.md
-          echo "## GPU info" >> report.md
-          cat gpu_info.txt >> report.md
-          
-          cml-send-comment report.md 
-
+          git show-ref
           
