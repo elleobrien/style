@@ -17,7 +17,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           apt-get install python3-dev -y
-          apt install imagemagick
+          apt install imagemagick -y
           pip install -r requirements.txt
           pip install dvc
           dvc repro
