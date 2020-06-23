@@ -53,24 +53,28 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN}}
         run: |
+          
+          
+          
           apt-get update -y
           apt-get install python3-dev -y
           apt install imagemagick -y
           pip install -r requirements.txt
-
           pip install dvc
+          
+          # DVC stuff
+          dvc --version
+          git fetch --prune
           dvc repro
           
           echo "# Style transfer" >> report.md
           git show origin/master:final_owl.png > master_owl.png
           convert +append final_owl.png master_owl.png out.png
-          convert out.png -resize 50%  out_shrink.png
+          convert out.png -resize 75%  out_shrink.png
           echo "### Workspace vs. Master" >> report.md
           cml-publish out_shrink.png --md --title 'compare' >> report.md
-
           
           echo "## Training metrics" >> report.md
-          git fetch --prune --unshallow
           dvc params diff master --show-md >> report.md
           
           echo >> report.md
@@ -78,5 +82,3 @@ jobs:
           cat gpu_info.txt >> report.md
           
           cml-send-comment report.md 
-
-          
