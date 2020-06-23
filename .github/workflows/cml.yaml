@@ -71,6 +71,7 @@ jobs:
           
           echo "## Training metrics" >> report.md
           git fetch --prune --unshallow
+          git fetch origin master:refs/remotes/origin/master
           dvc params diff master --show-md >> report.md
           
           echo >> report.md
