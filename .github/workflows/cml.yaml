@@ -17,6 +17,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           apt-get install python3-dev -y
+          apt install imagemagick
           pip install -r requirements.txt
           pip install dvc
           dvc repro
@@ -40,5 +41,5 @@ jobs:
           cat gpu_info.txt >> report.md
           
           cml-send-comment report.md 
-          cml-send-github-check report.md 
+
           
