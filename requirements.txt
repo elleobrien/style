@@ -4,3 +4,4 @@ pillow
 pandas
 tabulate
 nvgpu
+dvc
