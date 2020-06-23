@@ -21,16 +21,12 @@ jobs:
           pip install -r requirements.txt
           pip install dvc
           dvc repro
-      
           
           echo "# Style transfer" >> report.md
-          
-          echo "## Master" >> report.md
           git show origin/master:final_owl.png > master_owl.png
-          cml-publish master_owl.png --md --title 'master' >> report.md
-          
-          echo "## Workspace" >> report.md
-          cml-publish final_owl.png --md --title 'styled' >> report.md
+          convert +append final_owl.png master_owl.png out.png
+          echo "### Workspace vs. Master" >> report.md
+          cml-publish out.png --md --title 'compare' >> report.md
           
           echo "## Training metrics" >> report.md
           git fetch --prune --unshallow
