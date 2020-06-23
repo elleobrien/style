@@ -25,8 +25,9 @@ jobs:
           echo "# Style transfer" >> report.md
           git show origin/master:final_owl.png > master_owl.png
           convert +append final_owl.png master_owl.png out.png
+          convert out.png -resize 50%  out_shrink.png
           echo "### Workspace vs. Master" >> report.md
-          cml-publish out.png --md --title 'compare' >> report.md
+          cml-publish out_shrink.png --md --title 'compare' >> report.md
           
           echo "## Training metrics" >> report.md
           git fetch --prune --unshallow
