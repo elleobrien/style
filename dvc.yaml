@@ -12,3 +12,6 @@ stages:
     outs:
     - final_owl.png:
         cache: false
+    - gpu_info.txt:
+        cache: false
+    
